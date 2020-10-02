@@ -1,0 +1,39 @@
+﻿<Window x:Class="User.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:User"
+        xmlns:models="clr-namespace:User.Models"
+        mc:Ignorable="d"
+        Title="MainWindow" Width="800" Height="550"
+        WindowState="Maximized">
+    <Window.DataContext>
+        <models:Content x:Name="content"/>
+    </Window.DataContext>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Row="0" Orientation="Horizontal">
+            <TextBlock Text="{Binding DirectoriesCount}" FontSize="18" Margin="10,0" VerticalAlignment="Center"/>
+            <TextBlock Text="{Binding FilesCount}" FontSize="18" Margin="10,0" VerticalAlignment="Center"/>
+            <TextBlock Text="{Binding Total}" FontSize="18" Margin="10,0" VerticalAlignment="Center"/>
+        </StackPanel>
+        <ListBox Grid.Row="1" ItemsSource="{Binding Elements}">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <Grid Height="40">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="40"/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <Image Grid.Column="0" Source="{Binding Icon}" Width="24" Height="24"/>
+                        <TextBlock Grid.Column="1" Text="{Binding Path}" FontSize="14" VerticalAlignment="Center"/>
+                    </Grid>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+    </Grid>
+</Window>
